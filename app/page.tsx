@@ -72,7 +72,18 @@ export default async function AdminHome() {
 
   return (
     <main className="min-h-screen bg-gray-50 p-8">
-      <h1 className="text-3xl font-bold text-gray-900 mb-2">Admin Panel</h1>
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-3xl font-bold text-gray-900">Admin Panel</h1>
+        <form action="/auth/sign-out" method="POST">
+          <button
+            type="submit"
+            className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm text-gray-700 font-medium hover:bg-gray-50 transition-colors"
+          >
+            Sign out
+          </button>
+        </form>
+      </div>
+
       <p className="text-gray-600">
         Signed in as {user?.email} — you&apos;re a superadmin. Dashboard coming next.
       </p>

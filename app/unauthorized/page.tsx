@@ -11,6 +11,16 @@ export default function UnauthorizedPage() {
           You&apos;re signed in, but this area is restricted to superadmins.
           If you think this is a mistake, contact the project owner.
         </p>
+
+        <form action="/auth/sign-out" method="POST">
+          <button
+            type="submit"
+            className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-700 font-medium hover:bg-gray-50 transition-colors mb-3"
+          >
+            Sign out
+          </button>
+        </form>
+
         <Link href="/login" className="text-sm text-blue-600 hover:underline">
           Back to sign in
         </Link>
