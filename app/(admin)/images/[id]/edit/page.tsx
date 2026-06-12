@@ -14,14 +14,12 @@ export default async function EditImagePage({
   const supabase = await createClient();
 
   const { data: image, error } = await supabase
-    .from("humor_project_images")
-    .select("id, url, image_description")
+    .from("images")
+    .select("id, url, image_description, additional_context, is_common_use, is_public")
     .eq("id", id)
     .single();
 
-  if (error || !image) {
-    notFound();
-  }
+  if (error || !image) notFound();
 
   return (
     <div className="max-w-2xl space-y-6">
@@ -35,14 +33,15 @@ export default async function EditImagePage({
         initial={{
           url: image.url ?? "",
           image_description: image.image_description ?? "",
+          additional_context: image.additional_context ?? "",
+          is_common_use: image.is_common_use ?? false,
+          is_public: image.is_public ?? false,
         }}
       />
 
       <div className="rounded-xl border border-red-200 bg-red-50 p-6">
         <h2 className="text-sm font-semibold text-red-900">Danger zone</h2>
-        <p className="mt-1 text-xs text-red-700">
-          Permanently delete this image. This cannot be undone.
-        </p>
+        <p className="mt-1 text-xs text-red-700">Permanently delete this image.</p>
         <div className="mt-3">
           <DeleteButton imageId={String(image.id)} />
         </div>
