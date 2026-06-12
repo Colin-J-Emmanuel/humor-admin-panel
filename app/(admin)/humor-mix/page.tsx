@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 
 export const dynamic = "force-dynamic";
@@ -48,6 +49,7 @@ export default async function HumorMixPage() {
               <th className="px-4 py-3">Flavor</th>
               <th className="px-4 py-3 text-right">Caption Count</th>
               <th className="px-4 py-3">Last Modified</th>
+              <th className="px-4 py-3 text-right">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
@@ -65,12 +67,20 @@ export default async function HumorMixPage() {
                     { month: "short", day: "numeric", year: "numeric" }
                   )}
                 </td>
+                <td className="px-4 py-3 text-right">
+                  <Link
+                    href={`/humor-mix/${m.id}/edit`}
+                    className="text-xs font-medium text-blue-600 hover:text-blue-700"
+                  >
+                    Edit →
+                  </Link>
+                </td>
               </tr>
             ))}
             {rows.length === 0 && (
               <tr>
                 <td
-                  colSpan={3}
+                  colSpan={4}
                   className="px-4 py-10 text-center text-sm text-gray-500"
                 >
                   No humor mix entries found.
@@ -80,10 +90,6 @@ export default async function HumorMixPage() {
           </tbody>
         </table>
       </div>
-
-      <p className="text-xs text-gray-500">
-        Inline editing of caption counts comes with the CRUD phase.
-      </p>
     </div>
   );
 }
