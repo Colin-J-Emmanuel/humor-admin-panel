@@ -9,6 +9,10 @@ type NavSection = { title: string; items: NavItem[] };
 const SECTIONS: NavSection[] = [
   { title: "Overview", items: [{ href: "/", label: "Dashboard" }] },
   {
+    title: "Insights",
+    items: [{ href: "/caption-stats", label: "Caption Stats" }],
+  },
+  {
     title: "Users & Content",
     items: [
       { href: "/users", label: "Users" },
