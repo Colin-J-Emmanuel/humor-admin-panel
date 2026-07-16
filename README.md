@@ -82,7 +82,3 @@ In a fresh **Incognito** window:
 - **Server actions** return `{ error }` on failure and call `redirect()` on success.
 
 ---
-
-## Deployment
-
-Vercel, with **Deployment Protection off** so graders can reach it. Submit the **commit-specific** deployment URL from the Deployments tab, not the rolling production alias.
